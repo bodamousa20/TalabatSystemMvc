@@ -24,21 +24,4 @@ namespace TalabatSmartVillage.Models
         public ICollection<OrderItem> OrderItems { set; get; } = new List<OrderItem>();
 
     }
-    public enum OrderStatus
-    {
-        PENDING,CONFIRMED,DELIVERED,CANCELLED
-    } 
-    public class OrderItem
-    {
-        
-        public int Id { set; get; }
-
-        public int OrderId { set; get; }
-        public int MenuItemId { set; get; }
-
-        public Order order { set; get; }
-        public MenuItem menuItem { set; get; }
-        public int Quantity { set; get; }
-        public decimal UnitPrice { set; get; }
-    }
 }
