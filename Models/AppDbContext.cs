@@ -1,16 +1,18 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using TalabatSmartVillage.Auth;
 using TalabatSmartVillage.Configration;
+using TalabatSmartVillage.Dtos;
 
 namespace TalabatSmartVillage.Models
 {
-    public class AppDbContext:IdentityDbContext<AppUser>
+    public class AppDbContext:IdentityDbContext<AppUser,AppRole,string>
     {
 
         public DbSet<Category> category { set; get; }
         public DbSet<Restaurant> restaurant { set; get; }
-        
-                    public DbSet<MenuItem> MenuItem { set; get; }
+        public DbSet<MenuItem> MenuItem { set; get; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -32,5 +34,7 @@ namespace TalabatSmartVillage.Models
 
 
         }
+        public DbSet<TalabatSmartVillage.Dtos.RegisterViewModel> RegisterDto { get; set; } = default!;
+        public DbSet<TalabatSmartVillage.Dtos.LoginViewModel> LoginDto { get; set; } = default!;
     }
 }

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "jjTQWQ88UQU=",
+  "dgSpecHash": "nm4cGrJlP9g=",
   "success": true,
   "projectFilePath": "E:\\ITI\\TalabatSmartVillage\\TalabatSmartVillage\\TalabatSmartVillage.csproj",
   "expectedPackageFiles": [
@@ -130,30 +130,5 @@
     "C:\\Users\\Abdel\\.nuget\\packages\\system.security.cryptography.pkcs\\9.0.4\\system.security.cryptography.pkcs.9.0.4.nupkg.sha512",
     "C:\\Users\\Abdel\\.nuget\\packages\\system.security.cryptography.protecteddata\\9.0.6\\system.security.cryptography.protecteddata.9.0.6.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1901",
-      "level": "Warning",
-      "message": "Package 'NuGet.Packaging' 6.12.1 has a known low severity vulnerability, https://github.com/advisories/GHSA-g4vj-cjjj-v7hg",
-      "projectPath": "E:\\ITI\\TalabatSmartVillage\\TalabatSmartVillage\\TalabatSmartVillage.csproj",
-      "warningLevel": 1,
-      "filePath": "E:\\ITI\\TalabatSmartVillage\\TalabatSmartVillage\\TalabatSmartVillage.csproj",
-      "libraryId": "NuGet.Packaging",
-      "targetGraphs": [
-        "net10.0"
-      ]
-    },
-    {
-      "code": "NU1901",
-      "level": "Warning",
-      "message": "Package 'NuGet.Protocol' 6.12.1 has a known low severity vulnerability, https://github.com/advisories/GHSA-g4vj-cjjj-v7hg",
-      "projectPath": "E:\\ITI\\TalabatSmartVillage\\TalabatSmartVillage\\TalabatSmartVillage.csproj",
-      "warningLevel": 1,
-      "filePath": "E:\\ITI\\TalabatSmartVillage\\TalabatSmartVillage\\TalabatSmartVillage.csproj",
-      "libraryId": "NuGet.Protocol",
-      "targetGraphs": [
-        "net10.0"
-      ]
-    }
-  ]
+  "logs": []
 }

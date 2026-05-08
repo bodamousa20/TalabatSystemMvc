@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using TalabatSmartVillage.Auth;
 
 namespace TalabatSmartVillage.Models
 {
