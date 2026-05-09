@@ -1,33 +1,27 @@
 ﻿@model TalabatSmartVillage.Models.Category
 
-@{
-    ViewData["Title"] = "Create";
-}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card border-0 shadow-lg">
+                <div class="card-body p-4 text-center">
+                    <h4 class="fw-bold mb-3">New Category</h4>
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger small mb-3"></div> [cite: 1]
 
-<h1>Create</h1>
+                        <div class="mb-4">
+                            <label asp-for="Name" class="form-label text-muted small text-uppercase fw-bold d-block text-start">Name</label>
+                            <input asp-for="Name" class="form-control form-control-lg bg-light border-0" placeholder="Enter category name" /> [cite: 1]
+                            <span asp-validation-for="Name" class="text-danger small"></span> [cite: 2]
+                        </div>
 
-<h4>Category</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg shadow-sm">Save Category</button>
+                            <a asp-action="Index" class="btn btn-link text-muted">Go Back</a>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

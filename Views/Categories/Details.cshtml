@@ -1,24 +1,48 @@
 ﻿@model TalabatSmartVillage.Models.Category
 
-@{
-    ViewData["Title"] = "Details";
-}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body text-center p-4">
+                    <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex p-4 mb-3">
+                        <i class="bi bi-tag-fill fs-1"></i>
+                    </div>
+                    <h3 class="fw-bold mb-1">@Model.Name</h3>
+                    <p class="text-muted small">Category ID: #@Model.Id</p>
+                    <div class="mt-4 d-grid">
+                        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-primary">Edit Name</a> [cite: 7]
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<h1>Details</h1>
-
-<div>
-    <h4>Category</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+        <div class="col-md-8">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-header bg-white py-3">
+                    <h5 class="mb-0 fw-bold"><i class="bi bi-shop me-2 text-primary"></i>Linked Restaurants</h5>
+                </div>
+                <div class="card-body">
+                    @* Assuming Category has a List<Restaurant> property *@
+                    @if (ViewData["Restaurants"] != null)
+                    {
+                        <ul class="list-group list-group-flush">
+                            @* Logic to loop through restaurants would go here *@
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                Restaurant List will appear here
+                                <span class="badge bg-light text-primary border">View Shop</span>
+                            </li>
+                        </ul>
+                    }
+                    else
+                    {
+                        <div class="text-center py-5">
+                            <i class="bi bi-info-circle fs-2 text-light mb-2 d-block"></i>
+                            <p class="text-muted">No restaurants are currently assigned to this category.</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
