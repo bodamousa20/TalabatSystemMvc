@@ -61,65 +61,65 @@ wwwroot\lib\jquery\dist\jquery.slim.js
 wwwroot\lib\jquery\dist\jquery.slim.min.js
 wwwroot\lib\jquery\dist\jquery.slim.min.map
 wwwroot\lib\jquery\LICENSE.txt
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\css\site.css
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\favicon.ico
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\js\site.js
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\css\bootstrap.css
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\js\bootstrap.js
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\js\bootstrap.js.map
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\jquery-validation\dist\additional-methods.js
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\jquery-validation\dist\additional-methods.min.js
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\jquery-validation\dist\jquery.validate.js
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\jquery-validation\dist\jquery.validate.min.js
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\jquery-validation\LICENSE.md
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\jquery\dist\jquery.js
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\jquery\dist\jquery.min.js
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\jquery\dist\jquery.min.map
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\jquery\dist\jquery.slim.js
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\jquery\dist\jquery.slim.min.js
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\jquery\dist\jquery.slim.min.map
-E:\ITI\TalabatSmartVillage\TalabatSmartVillage\wwwroot\lib\jquery\LICENSE.txt
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\jquery\LICENSE.txt
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\jquery\dist\jquery.slim.min.map
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\jquery\dist\jquery.slim.min.js
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\jquery\dist\jquery.slim.js
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\jquery\dist\jquery.min.map
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\jquery\dist\jquery.min.js
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\jquery\dist\jquery.js
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\jquery-validation\LICENSE.md
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\jquery-validation\dist\jquery.validate.min.js
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\jquery-validation\dist\jquery.validate.js
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\jquery-validation\dist\additional-methods.min.js
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\jquery-validation\dist\additional-methods.js
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\js\bootstrap.js.map
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\js\bootstrap.js
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\css\bootstrap.css
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\js\site.js
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\favicon.ico
+D:\All Courses\ITI\MVC\TalabatSystemMvc\wwwroot\css\site.css

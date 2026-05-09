@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\ITI\\TalabatSmartVillage\\TalabatSmartVillage\\TalabatSmartVillage.csproj": {}
+    "D:\\All Courses\\ITI\\MVC\\TalabatSystemMvc\\TalabatSmartVillage.csproj": {}
   },
   "projects": {
-    "E:\\ITI\\TalabatSmartVillage\\TalabatSmartVillage\\TalabatSmartVillage.csproj": {
+    "D:\\All Courses\\ITI\\MVC\\TalabatSystemMvc\\TalabatSmartVillage.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\ITI\\TalabatSmartVillage\\TalabatSmartVillage\\TalabatSmartVillage.csproj",
+        "projectUniqueName": "D:\\All Courses\\ITI\\MVC\\TalabatSystemMvc\\TalabatSmartVillage.csproj",
         "projectName": "TalabatSmartVillage",
-        "projectPath": "E:\\ITI\\TalabatSmartVillage\\TalabatSmartVillage\\TalabatSmartVillage.csproj",
-        "packagesPath": "C:\\Users\\Abdel\\.nuget\\packages\\",
-        "outputPath": "E:\\ITI\\TalabatSmartVillage\\TalabatSmartVillage\\obj\\",
+        "projectPath": "D:\\All Courses\\ITI\\MVC\\TalabatSystemMvc\\TalabatSmartVillage.csproj",
+        "packagesPath": "C:\\Users\\Badry Anas\\.nuget\\packages\\",
+        "outputPath": "D:\\All Courses\\ITI\\MVC\\TalabatSystemMvc\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Abdel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Badry Anas\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,11 +26,11 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net10.0": {
-            "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {}
           }
@@ -45,11 +45,10 @@
           "auditLevel": "high",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.200"
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net10.0": {
-          "framework": "net10.0",
           "targetAlias": "net10.0",
           "dependencies": {
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
@@ -100,7 +99,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.202/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",

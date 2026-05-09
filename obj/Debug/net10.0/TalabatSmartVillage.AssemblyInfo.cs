@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TalabatSmartVillage")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+271dc68d2ba2678540cc057fb55cba57cd3cbd5b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+90b9c7eb985b6b6a807b156f969728da89d8fb88")]
 [assembly: System.Reflection.AssemblyProductAttribute("TalabatSmartVillage")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TalabatSmartVillage")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
