@@ -6164,23 +6164,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Abdel\\.nuget\\packages\\": {},
+    "C:\\Users\\Start\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\ITI\\TalabatSmartVillage\\TalabatSmartVillage\\TalabatSmartVillage.csproj",
+      "projectUniqueName": "D:\\ITI Data\\MVC\\Project\\TalabatSystemMvc\\TalabatSmartVillage.csproj",
       "projectName": "TalabatSmartVillage",
-      "projectPath": "E:\\ITI\\TalabatSmartVillage\\TalabatSmartVillage\\TalabatSmartVillage.csproj",
-      "packagesPath": "C:\\Users\\Abdel\\.nuget\\packages\\",
-      "outputPath": "E:\\ITI\\TalabatSmartVillage\\TalabatSmartVillage\\obj\\",
+      "projectPath": "D:\\ITI Data\\MVC\\Project\\TalabatSystemMvc\\TalabatSmartVillage.csproj",
+      "packagesPath": "C:\\Users\\Start\\.nuget\\packages\\",
+      "outputPath": "D:\\ITI Data\\MVC\\Project\\TalabatSystemMvc\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Abdel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Start\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -6263,7 +6263,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.202/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.203/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.AspNetCore": "(,10.0.32767]",
           "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
