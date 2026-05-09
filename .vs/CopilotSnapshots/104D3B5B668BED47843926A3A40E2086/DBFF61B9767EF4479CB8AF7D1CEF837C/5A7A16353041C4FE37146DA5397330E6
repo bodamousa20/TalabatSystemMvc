@@ -1,0 +1,140 @@
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using TalabatSmartVillage.Repositories.Interfaces;
+using TalabatSmartVillage.ViewModels;
+
+namespace TalabatSmartVillage.Controllers
+{
+    public class RestaurantController : Controller
+    {
+        private readonly IRestaurantRepo _repo;
+        public RestaurantController(IRestaurantRepo repo)
+        {
+            _repo = repo;
+        }
+
+        // GET: RestaurantController
+        public ActionResult Index()
+        {
+            var restaurants = _repo.GetAll();
+            return View(restaurants);
+        }
+
+        // GET: RestaurantController/Details/5
+        public ActionResult Details(int id)
+        {
+            try
+            {
+                var restaurant = _repo.GetById(id);
+                return View(restaurant);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+
+        // GET: RestaurantController/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: RestaurantController/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(RestaurantFormViewModel vm)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(vm);
+            }
+
+            try
+            {
+                _repo.Create(vm);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                return View(vm);
+            }
+        }
+
+        // GET: RestaurantController/Edit/5
+        public ActionResult Edit(int id)
+        {
+            try
+            {
+                var restaurant = _repo.GetById(id);
+                var vm = new RestaurantFormViewModel
+                {
+                    Id = restaurant.Id,
+                    Name = restaurant.Name,
+                    Address = restaurant.Address,
+                    CategoryId = restaurant.CategoryId,
+                    IsOpen = restaurant.IsOpen
+                };
+                return View(vm);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+
+        // POST: RestaurantController/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, RestaurantFormViewModel vm)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(vm);
+            }
+
+            try
+            {
+                _repo.Update(vm);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                return View(vm);
+            }
+        }
+
+        // GET: RestaurantController/Delete/5
+        public ActionResult Delete(int id)
+        {
+            try
+            {
+                var restaurant = _repo.GetById(id);
+                return View(restaurant);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+
+        // POST: RestaurantController/Delete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            try
+            {
+                _repo.Delete(id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                return View();
+            }
+        }
+    }
+}

@@ -1,0 +1,39 @@
+﻿using TalabatSmartVillage.Models;
+using TalabatSmartVillage.Repositories.Interfaces;
+using TalabatSmartVillage.ViewModel.RestaurantViewModels;
+
+namespace TalabatSmartVillage.Repositories.RepoImplementations
+{
+    public class RestaurantRepo : IRestaurantRepo
+    {
+        private readonly AppDbContext _appDbContext;
+        public RestaurantRepo(AppDbContext Context)
+        {
+            _appDbContext = Context;
+        }
+        public void Create(RestaurantFormViewModel vm)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<RestaurantListViewModel> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public RestaurantDetailsViewModel GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(RestaurantFormViewModel vm)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
