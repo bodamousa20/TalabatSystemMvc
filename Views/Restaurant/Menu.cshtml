@@ -1,0 +1,103 @@
+@model TalabatSmartVillage.ViewModel.RestaurantViewModels.RestaurantMenuViewModel
+
+@{
+    ViewData["Title"] = $"{Model.Name} Menu";
+    ViewBag.RestaurantId = Model.Id;
+}
+
+<div class="menu-hero card border-0 shadow-sm mb-4 overflow-hidden">
+    @if (!string.IsNullOrWhiteSpace(Model.BannerImageUrl))
+    {
+        <div class="menu-hero-image" style="background-image: url('@Model.BannerImageUrl');"></div>
+    }
+    <div class="card-body p-4">
+        <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3">
+            <div>
+                <h1 class="fw-bold mb-2">@Model.Name</h1>
+                <p class="text-muted mb-2">@Model.Description</p>
+                <div class="d-flex flex-wrap gap-2 text-muted">
+                    <span class="badge rounded-pill bg-light text-dark border">
+                        <i class="bi bi-geo-alt me-1"></i>@Model.Address
+                    </span>
+                    <span class="badge rounded-pill bg-light text-dark border">
+                        <i class="bi bi-tags me-1"></i>@Model.CategoryName
+                    </span>
+                    <span class="badge rounded-pill @(Model.IsOpen ? "bg-success" : "bg-danger")">
+                        @(Model.IsOpen ? "Open now" : "Closed")
+                    </span>
+                </div>
+
+@if (TempData["CartMessage"] != null)
+{
+    <div class="alert alert-success d-flex align-items-center gap-2">
+        <i class="bi bi-check-circle"></i>
+        <span>@TempData["CartMessage"]</span>
+    </div>
+}
+            </div>
+            <div class="text-lg-end">
+                <span class="d-block text-uppercase text-muted small">Menu Items</span>
+                <span class="display-6 fw-bold">@Model.MenuItems.Count</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-3">
+        <div class="card border-0 shadow-sm mb-4">
+            <div class="card-body">
+                <h5 class="fw-bold mb-3">Search</h5>
+                <form method="get" class="d-grid gap-2">
+                    <input type="hidden" name="id" value="@Model.Id" />
+                    <input type="hidden" name="category" value="@Model.SelectedCategory" />
+                    <div class="input-group">
+                        <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+                        <input class="form-control" type="text" name="search" value="@Model.SearchTerm" placeholder="Search menu items" />
+                    </div>
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <h5 class="fw-bold mb-3">Categories</h5>
+                <div class="list-group list-group-flush">
+                    @foreach (var category in Model.Categories)
+                    {
+                        var isActive = string.Equals(Model.SelectedCategory, category.Value, StringComparison.OrdinalIgnoreCase);
+                        <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center @(isActive ? "active" : "")"
+                           asp-action="Menu"
+                           asp-route-id="@Model.Id"
+                           asp-route-category="@category.Value"
+                           asp-route-search="@Model.SearchTerm">
+                            <span>@category.Label</span>
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-9">
+        @if (!Model.MenuItems.Any())
+        {
+            <div class="alert alert-light border text-center p-5">
+                <i class="bi bi-emoji-frown display-6 d-block mb-3"></i>
+                <h4 class="fw-bold">No menu items found</h4>
+                <p class="text-muted mb-0">Try adjusting your search or filters to find something tasty.</p>
+            </div>
+        }
+        else
+        {
+            <div class="row g-4">
+                @foreach (var item in Model.MenuItems)
+                {
+                    <div class="col-md-6 col-xl-4">
+                        @await Html.PartialAsync("_MenuItemCard", item)
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>

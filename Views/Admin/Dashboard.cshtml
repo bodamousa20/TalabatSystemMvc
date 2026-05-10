@@ -1,0 +1,92 @@
+@model TalabatSmartVillage.ViewModel.AdminViewModels.AdminDashboardViewModel
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="container-fluid py-4">
+    <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center mb-4">
+        <div>
+            <h2 class="fw-bold">Admin Dashboard</h2>
+            <p class="text-muted">Quick insights across restaurants, menus, and orders.</p>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-6 col-xl-4">
+            <div class="card border-0 shadow-sm stat-card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <p class="text-muted mb-1">Restaurants</p>
+                            <h3 class="fw-bold mb-0">@Model.RestaurantCount</h3>
+                        </div>
+                        <div class="stat-icon bg-primary text-white">
+                            <i class="bi bi-shop"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-4">
+            <div class="card border-0 shadow-sm stat-card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <p class="text-muted mb-1">Categories</p>
+                            <h3 class="fw-bold mb-0">@Model.CategoryCount</h3>
+                        </div>
+                        <div class="stat-icon bg-success text-white">
+                            <i class="bi bi-tags"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-4">
+            <div class="card border-0 shadow-sm stat-card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <p class="text-muted mb-1">Menu Items</p>
+                            <h3 class="fw-bold mb-0">@Model.MenuItemCount</h3>
+                        </div>
+                        <div class="stat-icon bg-warning text-dark">
+                            <i class="bi bi-list-ul"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-4">
+            <div class="card border-0 shadow-sm stat-card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <p class="text-muted mb-1">Users</p>
+                            <h3 class="fw-bold mb-0">@Model.UserCount</h3>
+                        </div>
+                        <div class="stat-icon bg-info text-white">
+                            <i class="bi bi-people"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-4">
+            <div class="card border-0 shadow-sm stat-card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <p class="text-muted mb-1">Orders</p>
+                            <h3 class="fw-bold mb-0">@Model.OrderCount</h3>
+                        </div>
+                        <div class="stat-icon bg-danger text-white">
+                            <i class="bi bi-basket"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
