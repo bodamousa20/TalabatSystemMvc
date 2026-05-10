@@ -1,0 +1,39 @@
+@model IEnumerable<TalabatSmartVillage.ViewModel.RestaurantViewModels.RestaurantListViewModel>
+
+@{
+    ViewData["Title"] = "Restaurants";
+}
+
+<div class="container-fluid py-4">
+    <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center mb-4">
+        <div>
+            <h2 class="fw-bold">Restaurants</h2>
+            <p class="text-muted">Discover nearby favorites and explore their menus.</p>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        @foreach (var restaurant in Model)
+        {
+            <div class="col-md-6 col-xl-4">
+                <div class="card h-100 border-0 shadow-sm restaurant-card">
+                    <div class="card-body d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <div>
+                                <h5 class="fw-bold mb-1">@restaurant.Name</h5>
+                                <span class="text-muted small">@restaurant.CategoryName</span>
+                            </div>
+                            <span class="badge rounded-pill @(restaurant.IsOpen ? "bg-success" : "bg-secondary")">
+                                @(restaurant.IsOpen ? "Open" : "Closed")
+                            </span>
+                        </div>
+                        <p class="text-muted mb-3"><i class="bi bi-geo-alt me-1"></i>@restaurant.Address</p>
+                        <div class="mt-auto d-flex gap-2">
+                            <a asp-controller="Restaurant" asp-action="Menu" asp-route-id="@restaurant.Id" class="btn btn-primary">View Menu</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
