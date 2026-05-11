@@ -1,23 +1,67 @@
-﻿@model TalabatSmartVillage.Models.Category
+@model TalabatSmartVillage.Models.Category
+
+@{
+    ViewData["Title"] = "Create Category";
+}
 
 <div class="container py-5">
     <div class="row justify-content-center">
-        <div class="col-md-5">
-            <div class="card border-0 shadow-lg">
-                <div class="card-body p-4 text-center">
-                    <h4 class="fw-bold mb-3">New Category</h4>
-                    <form asp-action="Create">
-                        <div asp-validation-summary="ModelOnly" class="text-danger small mb-3"></div> [cite: 1]
+        <div class="col-lg-7 col-md-9">
 
+            <!-- Header -->
+            <div class="mb-4">
+                <a asp-action="Index" class="text-decoration-none text-muted small">
+                    <i class="bi bi-arrow-left me-1"></i>Back to Categories
+                </a>
+                <h2 class="fw-bold mt-2">
+                    <i class="bi bi-plus-circle text-primary me-2"></i>Create New Category
+                </h2>
+                <p class="text-muted">Add a new menu category for restaurants.</p>
+            </div>
+
+            <!-- Form Card -->
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-white border-0 py-3">
+                    <h5 class="fw-bold mb-0"><i class="bi bi-pencil-square me-2 text-primary"></i>Category Details</h5>
+                </div>
+                <div class="card-body p-4 p-md-5">
+                    <form asp-action="Create" method="post" novalidate>
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger small d-none-empty"></div>
+
+                        <!-- Name -->
                         <div class="mb-4">
-                            <label asp-for="Name" class="form-label text-muted small text-uppercase fw-bold d-block text-start">Name</label>
-                            <input asp-for="Name" class="form-control form-control-lg bg-light border-0" placeholder="Enter category name" /> [cite: 1]
-                            <span asp-validation-for="Name" class="text-danger small"></span> [cite: 2]
+                            <label asp-for="Name" class="form-label fw-semibold">
+                                Name <span class="text-danger">*</span>
+                            </label>
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-text bg-light border-end-0">
+                                    <i class="bi bi-tag text-muted"></i>
+                                </span>
+                                <input asp-for="Name" required
+                                       class="form-control border-start-0 ps-0"
+                                       placeholder="e.g. Pizza, Burgers, Desserts" />
+                            </div>
+                            <span asp-validation-for="Name" class="text-danger small"></span>
+                            <div class="form-text">Choose a short, descriptive name shown to customers.</div>
                         </div>
 
-                        <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-primary btn-lg shadow-sm">Save Category</button>
-                            <a asp-action="Index" class="btn btn-link text-muted">Go Back</a>
+                        <!-- Description -->
+                        <div class="mb-4">
+                            <label asp-for="Description" class="form-label fw-semibold">Description</label>
+                            <textarea asp-for="Description" rows="4"
+                                      class="form-control"
+                                      placeholder="Optional short description..."></textarea>
+                            <span asp-validation-for="Description" class="text-danger small"></span>
+                        </div>
+
+                        <hr class="my-4" />
+
+                        <!-- Actions -->
+                        <div class="d-flex justify-content-end gap-2">
+                            <a asp-action="Index" class="btn btn-light px-4">Cancel</a>
+                            <button type="submit" class="btn btn-primary px-4 shadow-sm">
+                                <i class="bi bi-check2-circle me-1"></i>Save Category
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -25,3 +69,7 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,44 +1,84 @@
-﻿@model TalabatSmartVillage.Models.Category
+@model TalabatSmartVillage.Models.Category
+
+@{
+    ViewData["Title"] = "Category Details";
+}
 
 <div class="container py-5">
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card border-0 shadow-sm mb-4">
+    <div class="mb-4">
+        <a asp-action="Index" class="text-decoration-none text-muted small">
+            <i class="bi bi-arrow-left me-1"></i>Back to Categories
+        </a>
+    </div>
+
+    <div class="row g-4">
+        <!-- Left: Profile Card -->
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm">
                 <div class="card-body text-center p-4">
-                    <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex p-4 mb-3">
+                    <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
+                         style="width:90px;height:90px;">
                         <i class="bi bi-tag-fill fs-1"></i>
                     </div>
                     <h3 class="fw-bold mb-1">@Model.Name</h3>
-                    <p class="text-muted small">Category ID: #@Model.Id</p>
-                    <div class="mt-4 d-grid">
-                        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-primary">Edit Name</a> [cite: 7]
+                    <p class="text-muted small mb-3">Category #@Model.Id</p>
+                    <span class="badge rounded-pill bg-success-subtle text-success px-3 py-2 mb-4">
+                        <i class="bi bi-circle-fill me-1" style="font-size:6px;"></i>Active
+                    </span>
+                    <div class="d-grid gap-2">
+                        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning fw-semibold">
+                            <i class="bi bi-pencil-square me-1"></i>Edit
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger">
+                            <i class="bi bi-trash3 me-1"></i>Delete
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-8">
-            <div class="card border-0 shadow-sm h-100">
-                <div class="card-header bg-white py-3">
-                    <h5 class="mb-0 fw-bold"><i class="bi bi-shop me-2 text-primary"></i>Linked Restaurants</h5>
+        <!-- Right: Info -->
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-header bg-white border-0 py-3">
+                    <h5 class="fw-bold mb-0">
+                        <i class="bi bi-info-circle me-2 text-primary"></i>Category Information
+                    </h5>
+                </div>
+                <div class="card-body p-4">
+                    <dl class="row mb-0">
+                        <dt class="col-sm-3 text-muted fw-normal">Name</dt>
+                        <dd class="col-sm-9 fw-semibold">@Model.Name</dd>
+
+                        <dt class="col-sm-3 text-muted fw-normal mt-2">Description</dt>
+                        <dd class="col-sm-9 mt-2">
+                            @(string.IsNullOrEmpty(Model.Description) ? "No description provided." : Model.Description)
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-white border-0 py-3">
+                    <h5 class="fw-bold mb-0">
+                        <i class="bi bi-shop me-2 text-primary"></i>Linked Restaurants
+                    </h5>
                 </div>
                 <div class="card-body">
-                    @* Assuming Category has a List<Restaurant> property *@
                     @if (ViewData["Restaurants"] != null)
                     {
                         <ul class="list-group list-group-flush">
-                            @* Logic to loop through restaurants would go here *@
                             <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                Restaurant List will appear here
-                                <span class="badge bg-light text-primary border">View Shop</span>
+                                Restaurant items will appear here
+                                <span class="badge bg-light text-primary border">View</span>
                             </li>
                         </ul>
                     }
                     else
                     {
                         <div class="text-center py-5">
-                            <i class="bi bi-info-circle fs-2 text-light mb-2 d-block"></i>
-                            <p class="text-muted">No restaurants are currently assigned to this category.</p>
+                            <i class="bi bi-inbox fs-1 text-muted opacity-50 d-block mb-2"></i>
+                            <p class="text-muted mb-0">No restaurants are currently assigned to this category.</p>
                         </div>
                     }
                 </div>
