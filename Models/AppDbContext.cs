@@ -15,6 +15,7 @@ namespace TalabatSmartVillage.Models
         public DbSet<Category> category { set; get; }
         public DbSet<Restaurant> restaurant { set; get; }
         public DbSet<MenuItem> MenuItem { set; get; }
+        public DbSet<Order> Order { set; get; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
