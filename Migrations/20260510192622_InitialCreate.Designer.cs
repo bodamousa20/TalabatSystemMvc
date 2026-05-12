@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TalabatSmartVillage.Models;
 
@@ -11,9 +12,11 @@ using TalabatSmartVillage.Models;
 namespace TalabatSmartVillage.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260510192622_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -107,6 +110,13 @@ namespace TalabatSmartVillage.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "adminsIdFakerIdes125d$2$@E@23",
+                            RoleId = "A78adjdnmjj5214-03945fv%43mf"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -153,6 +163,22 @@ namespace TalabatSmartVillage.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "A78adjdnmjj5214-03945fv%43mf",
+                            ConcurrencyStamp = "A78adjdnmjj5214-03945fv%43mf",
+                            Name = "ADMIN",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "bkdd8ad52mjj5214-03945fv%43ds",
+                            ConcurrencyStamp = "bkdd8ad52mjj5214-03945fv%43ds",
+                            Name = "USER",
+                            NormalizedName = "USER"
+                        });
                 });
 
             modelBuilder.Entity("TalabatSmartVillage.Auth.AppUser", b =>
@@ -232,70 +258,28 @@ namespace TalabatSmartVillage.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-                });
 
-            modelBuilder.Entity("TalabatSmartVillage.Dtos.LoginViewModel", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("id");
-
-                    b.ToTable("LoginDto");
-                });
-
-            modelBuilder.Entity("TalabatSmartVillage.Dtos.RegisterViewModel", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FullName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("phone")
-                        .IsRequired()
-                        .HasMaxLength(11)
-                        .HasColumnType("nvarchar(11)");
-
-                    b.Property<int>("postalCode")
-                        .HasColumnType("int");
-
-                    b.Property<string>("username")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.HasKey("id");
-
-                    b.ToTable("RegisterDto");
+                    b.HasData(
+                        new
+                        {
+                            Id = "adminsIdFakerIdes125d$2$@E@23",
+                            AccessFailedCount = 0,
+                            Address = "Admin Address",
+                            ConcurrencyStamp = "ae56e2eb-a436-4980-adf5-14e3ec424a83",
+                            CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "admin@gmail.com",
+                            EmailConfirmed = true,
+                            FullName = "Admin",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@GMAIL.COM",
+                            NormalizedUserName = "ADMIN@GMAIL.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKCc38T78doP4i8xDcHSarN9K8s9boaQ/tqiUNFdI+vO+jTenMkuJmuCCfNgnQP0NQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "ff917ecc-c7f6-446a-a286-475b554d5fc0",
+                            TwoFactorEnabled = false,
+                            UserName = "admin@gmail.com",
+                            postalcode = 0
+                        });
                 });
 
             modelBuilder.Entity("TalabatSmartVillage.Models.Category", b =>
@@ -305,10 +289,6 @@ namespace TalabatSmartVillage.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -323,49 +303,41 @@ namespace TalabatSmartVillage.Migrations
                         new
                         {
                             Id = 1,
-                            Description = "Quick and easy meals",
                             Name = "Fast Food"
                         },
                         new
                         {
                             Id = 2,
-                            Description = "Cheesy and delicious",
                             Name = "Pizza"
                         },
                         new
                         {
                             Id = 3,
-                            Description = "Japanese delicacy",
                             Name = "Sushi"
                         },
                         new
                         {
                             Id = 4,
-                            Description = "Juicy and filling",
                             Name = "Burgers"
                         },
                         new
                         {
                             Id = 5,
-                            Description = "Tender and tasty",
                             Name = "Chicken"
                         },
                         new
                         {
                             Id = 6,
-                            Description = "Fresh from the ocean",
                             Name = "Seafood"
                         },
                         new
                         {
                             Id = 7,
-                            Description = "Sweet and indulgent",
                             Name = "Desserts"
                         },
                         new
                         {
                             Id = 8,
-                            Description = "Nutritious and balanced",
                             Name = "Healthy"
                         });
                 });

@@ -9,6 +9,8 @@ namespace TalabatSmartVillage.Models
 
         public string Name { set; get; }
 
+        public string Description { set; get; }
+
         public ICollection<Restaurant> Restaurants { set; get; } = new List<Restaurant>();
     }
 }
