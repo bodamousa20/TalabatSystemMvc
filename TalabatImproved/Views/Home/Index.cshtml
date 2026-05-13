@@ -1,0 +1,80 @@
+@model IEnumerable<TalabatSmartVillage.Models.Category>
+
+@{
+    ViewData["Title"] = "Home";
+    Layout = "_Layout";
+}
+
+<!-- Hero Section -->
+<section class="hero-section text-white py-5" style="background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);">
+    <div class="container py-4">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-3">Order food you love</h1>
+                <p class="lead mb-4 opacity-75">Discover restaurants near you, explore menus, and get food delivered fast.</p>
+                <a asp-controller="Account" asp-action="Register" class="btn btn-light btn-lg fw-bold me-3">
+                    Get Started <i class="bi bi-arrow-right ms-1"></i>
+                </a>
+                <a asp-controller="Account" asp-action="Login" class="btn btn-outline-light btn-lg">
+                    Sign In
+                </a>
+            </div>
+            <div class="col-lg-6 text-center mt-4 mt-lg-0">
+                <i class="bi bi-bag-heart-fill" style="font-size: 8rem; opacity: 0.15;"></i>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How it works -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5">How it works</h2>
+        <div class="row g-4 text-center">
+            <div class="col-md-4">
+                <div class="card border-0 h-100 p-4">
+                    <div class="mb-3"><i class="bi bi-search text-danger" style="font-size:2.5rem;"></i></div>
+                    <h5 class="fw-bold">Browse Restaurants</h5>
+                    <p class="text-muted">Explore hundreds of restaurants and menus near you.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 h-100 p-4">
+                    <div class="mb-3"><i class="bi bi-cart3 text-danger" style="font-size:2.5rem;"></i></div>
+                    <h5 class="fw-bold">Add to Cart</h5>
+                    <p class="text-muted">Pick your favourite dishes and add them to your cart.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 h-100 p-4">
+                    <div class="mb-3"><i class="bi bi-truck text-danger" style="font-size:2.5rem;"></i></div>
+                    <h5 class="fw-bold">Fast Delivery</h5>
+                    <p class="text-muted">Sit back and relax while your order is on its way.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Categories -->
+@if (Model.Any())
+{
+    <section class="py-5">
+        <div class="container">
+            <h2 class="fw-bold mb-4">Browse by Category</h2>
+            <div class="row g-3">
+                @foreach (var category in Model)
+                {
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <a asp-controller="Account" asp-action="Login"
+                           class="card border-0 shadow-sm text-decoration-none text-dark text-center p-3 category-card h-100">
+                            <i class="bi bi-egg-fried text-danger mb-2" style="font-size:2rem;"></i>
+                            <div class="fw-bold">@category.Name</div>
+                            <small class="text-muted">@category.Description</small>
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+}

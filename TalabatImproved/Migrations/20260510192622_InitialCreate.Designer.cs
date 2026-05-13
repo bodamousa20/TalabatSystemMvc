@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TalabatSmartVillage.Models;
 
@@ -11,9 +12,11 @@ using TalabatSmartVillage.Models;
 namespace TalabatSmartVillage.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260510192622_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -287,10 +290,6 @@ namespace TalabatSmartVillage.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(255)
@@ -304,49 +303,41 @@ namespace TalabatSmartVillage.Migrations
                         new
                         {
                             Id = 1,
-                            Description = "Quick and easy meals",
                             Name = "Fast Food"
                         },
                         new
                         {
                             Id = 2,
-                            Description = "Cheesy and delicious",
                             Name = "Pizza"
                         },
                         new
                         {
                             Id = 3,
-                            Description = "Japanese delicacy",
                             Name = "Sushi"
                         },
                         new
                         {
                             Id = 4,
-                            Description = "Juicy and filling",
                             Name = "Burgers"
                         },
                         new
                         {
                             Id = 5,
-                            Description = "Tender and tasty",
                             Name = "Chicken"
                         },
                         new
                         {
                             Id = 6,
-                            Description = "Fresh from the ocean",
                             Name = "Seafood"
                         },
                         new
                         {
                             Id = 7,
-                            Description = "Sweet and indulgent",
                             Name = "Desserts"
                         },
                         new
                         {
                             Id = 8,
-                            Description = "Nutritious and balanced",
                             Name = "Healthy"
                         });
                 });

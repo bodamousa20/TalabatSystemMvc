@@ -14,16 +14,19 @@ namespace TalabatSmartVillage.Controllers
         {
             _context = context;
         }
+
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            return View("Views\\Categories\\Index.cshtml" , await _context.category.ToListAsync());
+            // Redirect authenticated users to restaurants page
+            if (User.Identity?.IsAuthenticated == true)
+                return RedirectToAction("Index", "Restaurant");
+
+            var categories = await _context.category.ToListAsync();
+            return View(categories);
         }
 
         [HttpGet]
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+        public IActionResult Privacy() => View();
     }
 }

@@ -1,0 +1,124 @@
+@model TalabatSmartVillage.ViewModel.CheckoutViewModels.CheckoutViewModel
+
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<div class="container py-5">
+    <h2 class="fw-bold mb-4"><i class="bi bi-credit-card me-2"></i>Checkout</h2>
+
+    <form asp-action="PlaceOrder" method="post">
+        @Html.AntiForgeryToken()
+        <div class="row g-4">
+            <!-- Left: Delivery + Payment -->
+            <div class="col-lg-7">
+
+                <!-- Delivery Info -->
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-header bg-white border-0 pt-4 pb-0 px-4">
+                        <h5 class="fw-bold"><i class="bi bi-truck me-2 text-danger"></i>Delivery Details</h5>
+                    </div>
+                    <div class="card-body px-4">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label asp-for="FullName" class="form-label fw-semibold"></label>
+                                <input asp-for="FullName" class="form-control" placeholder="Your full name" />
+                                <span asp-validation-for="FullName" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="Phone" class="form-label fw-semibold"></label>
+                                <input asp-for="Phone" class="form-control" placeholder="01012345678" />
+                                <span asp-validation-for="Phone" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="City" class="form-label fw-semibold"></label>
+                                <input asp-for="City" class="form-control" placeholder="Cairo" />
+                                <span asp-validation-for="City" class="text-danger small"></span>
+                            </div>
+                            <div class="col-12">
+                                <label asp-for="Address" class="form-label fw-semibold"></label>
+                                <input asp-for="Address" class="form-control" placeholder="Street, Building, Floor, Apartment" />
+                                <span asp-validation-for="Address" class="text-danger small"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment (fake for testing) -->
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-white border-0 pt-4 pb-0 px-4">
+                        <h5 class="fw-bold"><i class="bi bi-credit-card me-2 text-danger"></i>Payment Info</h5>
+                        <p class="text-muted small mb-0">
+                            <i class="bi bi-info-circle me-1"></i>
+                            This is a test environment — use any 16-digit number.
+                        </p>
+                    </div>
+                    <div class="card-body px-4">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label asp-for="CardHolderName" class="form-label fw-semibold"></label>
+                                <input asp-for="CardHolderName" class="form-control" placeholder="Name on card" />
+                                <span asp-validation-for="CardHolderName" class="text-danger small"></span>
+                            </div>
+                            <div class="col-12">
+                                <label asp-for="CardNumber" class="form-label fw-semibold"></label>
+                                <input asp-for="CardNumber" class="form-control" placeholder="1234 5678 9012 3456" maxlength="16" />
+                                <span asp-validation-for="CardNumber" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="ExpiryDate" class="form-label fw-semibold"></label>
+                                <input asp-for="ExpiryDate" class="form-control" placeholder="MM/YY" maxlength="5" />
+                                <span asp-validation-for="ExpiryDate" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="CVV" class="form-label fw-semibold"></label>
+                                <input asp-for="CVV" class="form-control" placeholder="123" maxlength="4" />
+                                <span asp-validation-for="CVV" class="text-danger small"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Order Summary -->
+            <div class="col-lg-5">
+                <div class="card border-0 shadow-sm p-4 sticky-top" style="top:80px;">
+                    <h5 class="fw-bold mb-3">Order Summary</h5>
+                    @foreach (var item in Model.CartItems)
+                    {
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <div>
+                                <span class="fw-semibold">@item.Name</span>
+                                <span class="text-muted small ms-1">x@item.Quantity</span>
+                            </div>
+                            <span class="text-muted">@item.LineTotal.ToString("C")</span>
+                        </div>
+                    }
+                    <hr />
+                    <div class="d-flex justify-content-between mb-1">
+                        <span class="text-muted">Subtotal</span>
+                        <span>@Model.Total.ToString("C")</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-3">
+                        <span class="text-muted">Delivery</span>
+                        <span class="text-success fw-semibold">Free</span>
+                    </div>
+                    <div class="d-flex justify-content-between fw-bold fs-5 mb-4">
+                        <span>Total</span>
+                        <span class="text-danger">@Model.Total.ToString("C")</span>
+                    </div>
+                    <button type="submit" class="btn btn-danger w-100 fw-bold py-2">
+                        <i class="bi bi-check-circle me-1"></i>Place Order
+                    </button>
+                    <a asp-controller="Cart" asp-action="Index" class="btn btn-outline-secondary w-100 mt-2">
+                        <i class="bi bi-arrow-left me-1"></i>Edit Cart
+                    </a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
