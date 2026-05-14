@@ -1,0 +1,67 @@
+/* Base */
+html { font-size: 14px; }
+@media (min-width: 768px) { html { font-size: 16px; } }
+
+body { margin-bottom: 0; }
+
+/* Focus rings */
+.btn:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+/* Navbar */
+.navbar-dark .navbar-nav .nav-link {
+    opacity: 0.85;
+    transition: opacity 0.15s;
+}
+.navbar-dark .navbar-nav .nav-link:hover { opacity: 1; }
+
+/* Cards */
+.menu-card, .restaurant-card, .category-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 0.75rem;
+}
+.menu-card:hover, .restaurant-card:hover, .category-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0.75rem 1.5rem rgba(0,0,0,0.1) !important;
+}
+
+/* Menu images */
+.menu-card-image { height: 180px; object-fit: cover; }
+.menu-card-placeholder { height: 180px; background: #f8f9fa; font-size: 2.5rem; border-radius: 0.5rem 0.5rem 0 0; }
+
+/* Restaurant banner */
+.menu-hero-image { background-size: cover; background-position: center; height: 220px; }
+
+/* Stat cards */
+.stat-card { border-radius: 1rem !important; }
+.stat-icon {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; flex-shrink: 0;
+}
+
+/* Profile */
+.profile-avatar {
+    width: 64px; height: 64px; font-size: 2rem;
+    background: #e74c3c; color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+}
+
+/* Cart item hover */
+.cart-item { transition: background 0.15s; }
+.cart-item:hover { background: #fafafa; }
+
+/* bg-orange custom */
+.bg-orange { background-color: #fd7e14 !important; }
+
+/* Sticky sidebar helper */
+.sticky-top { z-index: 100; }
+
+/* Hero */
+.hero-section { min-height: 400px; display: flex; align-items: center; }
+
+/* Min-height helper */
+.min-vh-75 { min-height: 75vh; }

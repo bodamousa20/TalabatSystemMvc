@@ -1,0 +1,93 @@
+@model IEnumerable<TalabatSmartVillage.Models.Order>
+@using TalabatSmartVillage.Models
+
+@{
+    ViewData["Title"] = "Manage Orders";
+}
+
+<div class="container-fluid py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold">Order Management</h2>
+            <p class="text-muted">View and update the status of all orders.</p>
+        </div>
+        <a asp-action="Dashboard" class="btn btn-outline-secondary btn-sm">
+            <i class="bi bi-arrow-left me-1"></i>Dashboard
+        </a>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show">
+            <i class="bi bi-check-circle me-1"></i>@TempData["Success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <div class="card border-0 shadow-sm">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>#</th>
+                            <th>Customer</th>
+                            <th>Restaurant</th>
+                            <th>Total</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var order in Model)
+                        {
+                            <tr>
+                                <td class="fw-bold text-muted">#@order.Id</td>
+                                <td>@(order.User?.FullName ?? "—")</td>
+                                <td>@(order.Restaurant?.Name ?? "—")</td>
+                                <td class="fw-bold">@order.TotalOrderPrice.ToString("C")</td>
+                                <td class="small text-muted">@order.PlacedAt.ToString("MMM dd, yyyy HH:mm")</td>
+                                <td>
+                                    @{
+                                        var badge = order.Status switch
+                                        {
+                                            OrderStatus.PENDING => "bg-warning text-dark",
+                                            OrderStatus.CONFIRMED => "bg-info text-white",
+                                            OrderStatus.DELIVERED => "bg-success",
+                                            OrderStatus.CANCELLED => "bg-danger",
+                                            _ => "bg-secondary"
+                                        };
+                                    }
+                                    <span class="badge @badge">@order.Status</span>
+                                </td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="btn btn-outline-secondary btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+                                            Change Status
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            @foreach (var status in Enum.GetValues<OrderStatus>())
+                                            {
+                                                <li>
+                                                    <form asp-action="UpdateOrderStatus" method="post">
+                                                        @Html.AntiForgeryToken()
+                                                        <input type="hidden" name="orderId" value="@order.Id" />
+                                                        <input type="hidden" name="status" value="@((int)status)" />
+                                                        <button type="submit" class="dropdown-item @(order.Status == status ? "active" : "")">
+                                                            @status
+                                                        </button>
+                                                    </form>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

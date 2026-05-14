@@ -1,0 +1,43 @@
+@model TalabatSmartVillage.Models.Category
+
+<div class="card border-0 shadow-sm">
+    <div class="card-header bg-white border-0 py-3 d-flex justify-content-between align-items-center">
+        <h5 class="fw-bold mb-0">
+            <i class="bi bi-shop me-2 text-primary"></i>Linked Restaurants
+        </h5>
+        <span class="badge bg-primary rounded-pill">@Model.Restaurants?.Count() total</span>
+    </div>
+    <div class="card-body p-0">
+        @if (Model.Restaurants != null && Model.Restaurants.Any())
+        {
+            <ul class="list-group list-group-flush">
+                @foreach (var restaurant in Model.Restaurants)
+                {
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-4 py-3">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center"
+                                 style="width:40px;height:40px;">
+                                <i class="bi bi-shop"></i>
+                            </div>
+                            <div>
+                                <p class="fw-semibold mb-0">@restaurant.Name</p>
+                                <small class="text-muted">@restaurant.Address</small>
+                            </div>
+                        </div>
+                        <a asp-controller="Restaurant" asp-action="Details" asp-route-id="@restaurant.Id"
+                               class="badge bg-light text-primary border text-decoration-none">
+                            View
+                        </a>
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <div class="text-center py-5">
+                <i class="bi bi-inbox fs-1 text-muted opacity-50 d-block mb-2"></i>
+                <p class="text-muted mb-0">No restaurants are currently assigned to this category.</p>
+            </div>
+        }
+    </div>
+</div>

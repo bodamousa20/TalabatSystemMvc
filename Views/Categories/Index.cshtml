@@ -1,0 +1,211 @@
+@model IEnumerable<TalabatSmartVillage.Models.Category>
+
+@{
+    ViewData["Title"] = "Categories";
+}
+
+<div class="container-fluid py-4 px-4">
+    <!-- Page Header -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold text-dark mb-1">
+                <i class="bi bi-grid-1x2-fill text-primary me-2"></i>Menu Categories
+            </h2>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0 small">
+                    <li class="breadcrumb-item"><a href="#" class="text-decoration-none">Dashboard</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Categories</li>
+                </ol>
+            </nav>
+        </div>
+        <a asp-action="Create" class="btn btn-primary shadow-sm px-4 py-2 mt-3 mt-md-0">
+            <i class="bi bi-plus-circle me-2"></i>New Category
+        </a>
+    </div>
+
+    <!-- Stats Row -->
+    <div class="row g-3 mb-4">
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body d-flex align-items-center">
+                    <div class="bg-primary bg-opacity-10 text-primary rounded-3 p-3 me-3">
+                        <i class="bi bi-collection fs-3"></i>
+                    </div>
+                    <div>
+                        <div class="text-muted small">Total Categories</div>
+                        <div class="h4 fw-bold mb-0">@Model.Count()</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body d-flex align-items-center">
+                    <div class="bg-success bg-opacity-10 text-success rounded-3 p-3 me-3">
+                        <i class="bi bi-check-circle fs-3"></i>
+                    </div>
+                    <div>
+                        <div class="text-muted small">Active</div>
+                        <div class="h4 fw-bold mb-0">@Model.Count()</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body d-flex align-items-center">
+                    <div class="bg-warning bg-opacity-10 text-warning rounded-3 p-3 me-3">
+                        <i class="bi bi-clock-history fs-3"></i>
+                    </div>
+                    <div>
+                        <div class="text-muted small">Last Updated</div>
+                        <div class="h6 fw-bold mb-0">Today</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Table Card -->
+    <div class="card border-0 shadow-sm">
+        <div class="card-header bg-white border-0 py-3">
+            <div class="row g-2 align-items-center">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-text bg-light border-0">
+                            <i class="bi bi-search text-muted"></i>
+                        </span>
+                        <input id="categorySearch" type="text" class="form-control bg-light border-0"
+                               placeholder="Search categories..." />
+                    </div>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="btn-group">
+                        <button class="btn btn-outline-secondary btn-sm">
+                            <i class="bi bi-funnel me-1"></i>Filter
+                        </button>
+                        <button class="btn btn-outline-secondary btn-sm">
+                            <i class="bi bi-download me-1"></i>Export
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0" id="categoriesTable">
+                    <thead class="table-light">
+                        <tr>
+                            <th class="ps-4" style="width:40px;">#</th>
+                            <th>Category</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                            <th class="text-end pe-4">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (!Model.Any())
+                        {
+                            <tr>
+                                <td colspan="5" class="text-center py-5 text-muted">
+                                    <i class="bi bi-inbox fs-1 d-block mb-2 opacity-50"></i>
+                                    No categories found. Click <strong>New Category</strong> to add one.
+                                </td>
+                            </tr>
+                        }
+                        else
+                        {
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="ps-4 text-muted small">@item.Id</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="bg-primary bg-opacity-10 text-primary rounded d-flex align-items-center justify-content-center me-3"
+                                                 style="width:40px;height:40px;">
+                                                <i class="bi bi-tag-fill"></i>
+                                            </div>
+                                            <span class="fw-semibold">@item.Name</span>
+                                        </div>
+                                    </td>
+                                    <td class="text-muted">
+                                        @(string.IsNullOrEmpty(item.Description) ? "—" : item.Description)
+                                    </td>
+                                    <td>
+                                        <span class="badge rounded-pill bg-success-subtle text-success px-3 py-2">
+                                            <i class="bi bi-circle-fill me-1" style="font-size:6px;"></i>Active
+                                        </span>
+                                    </td>
+                                    <td class="text-end pe-4">
+                                        <a asp-action="Details" asp-route-id="@item.Id"
+                                           class="btn btn-sm btn-light border" title="Details">
+                                            <i class="bi bi-eye"></i>
+                                        </a>
+                                        <a asp-action="Edit" asp-route-id="@item.Id"
+                                           class="btn btn-sm btn-light border text-warning" title="Edit">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </a>
+                                        <button type="button" class="btn btn-sm btn-light border text-danger"
+                                                data-bs-toggle="modal" data-bs-target="#deleteModal"
+                                                data-id="@item.Id" data-name="@item.Name" title="Delete">
+                                            <i class="bi bi-trash3"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer bg-white border-0 py-3 text-muted small">
+            Showing <strong>@Model.Count()</strong> categories
+        </div>
+    </div>
+</div>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg">
+            <div class="modal-body text-center p-5">
+                <div class="bg-danger bg-opacity-10 text-danger rounded-circle d-inline-flex p-4 mb-3">
+                    <i class="bi bi-exclamation-triangle-fill fs-1"></i>
+                </div>
+                <h4 class="fw-bold">Delete Category?</h4>
+                <p class="text-muted">
+                    Are you sure you want to delete
+                    <strong id="deleteCategoryName" class="text-dark">this category</strong>?
+                    This action cannot be undone.
+                </p>
+                <form asp-action="Delete" method="post" class="d-grid gap-2">
+                    <input type="hidden" name="id" id="deleteCategoryId" />
+                    <button type="submit" class="btn btn-danger btn-lg fw-bold">
+                        <i class="bi bi-trash3 me-2"></i>Yes, Delete
+                    </button>
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Live search
+        document.getElementById('categorySearch')?.addEventListener('input', function (e) {
+            const term = e.target.value.toLowerCase();
+            document.querySelectorAll('#categoriesTable tbody tr').forEach(row => {
+                row.style.display = row.innerText.toLowerCase().includes(term) ? '' : 'none';
+            });
+        });
+
+        // Delete modal data passing
+        const deleteModal = document.getElementById('deleteModal');
+        deleteModal?.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+            document.getElementById('deleteCategoryId').value = button.getAttribute('data-id');
+            document.getElementById('deleteCategoryName').textContent = button.getAttribute('data-name');
+        });
+    </script>
+}

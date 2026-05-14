@@ -1,0 +1,91 @@
+@model TalabatSmartVillage.Models.Category
+
+@{
+    ViewData["Title"] = "Edit Category";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-7 col-md-9">
+
+            <div class="mb-4">
+                <a asp-action="Index" class="text-decoration-none text-muted small">
+                    <i class="bi bi-arrow-left me-1"></i>Back to Categories
+                </a>
+                <h2 class="fw-bold mt-2">
+                    <i class="bi bi-pencil-square text-warning me-2"></i>Edit Category
+                </h2>
+                <p class="text-muted">Update details for <strong>@Model.Name</strong>.</p>
+            </div>
+
+            <div class="card border-0 shadow-sm border-top border-warning border-3">
+                <div class="card-body p-4 p-md-5">
+                    <form asp-action="Edit" method="post" novalidate>
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger small"></div>
+                        <input type="hidden" asp-for="Id" />
+
+                        <div class="mb-4">
+                            <label asp-for="Name" class="form-label fw-semibold">
+                                Name <span class="text-danger">*</span>
+                            </label>
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-text bg-light border-end-0">
+                                    <i class="bi bi-tag text-muted"></i>
+                                </span>
+                                <input asp-for="Name" required class="form-control border-start-0 ps-0" />
+                            </div>
+                            <span asp-validation-for="Name" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="Description" class="form-label fw-semibold">Description</label>
+                            <textarea asp-for="Description" rows="4" class="form-control"></textarea>
+                            <span asp-validation-for="Description" class="text-danger small"></span>
+                        </div>
+
+                        <hr class="my-4" />
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button type="button" class="btn btn-outline-danger"
+                                    data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                <i class="bi bi-trash3 me-1"></i>Delete
+                            </button>
+                            <div class="d-flex gap-2">
+                                <a asp-action="Index" class="btn btn-light px-4">Cancel</a>
+                                <button type="submit" class="btn btn-warning px-4 fw-bold shadow-sm">
+                                    <i class="bi bi-check2-circle me-1"></i>Update
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg">
+            <div class="modal-body text-center p-5">
+                <div class="bg-danger bg-opacity-10 text-danger rounded-circle d-inline-flex p-4 mb-3">
+                    <i class="bi bi-exclamation-triangle-fill fs-1"></i>
+                </div>
+                <h4 class="fw-bold">Delete @Model.Name?</h4>
+                <p class="text-muted">This action cannot be undone.</p>
+                <form asp-action="Delete" method="post" class="d-grid gap-2">
+                    <input type="hidden" name="id" value="@Model.Id" />
+                    <button type="submit" class="btn btn-danger btn-lg fw-bold">
+                        <i class="bi bi-trash3 me-2"></i>Yes, Delete
+                    </button>
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

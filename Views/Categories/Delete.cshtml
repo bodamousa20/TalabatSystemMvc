@@ -1,0 +1,66 @@
+@model TalabatSmartVillage.Models.Category
+
+@{
+    ViewData["Title"] = "Delete Category";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+
+            <div class="mb-4">
+                <a asp-action="Index" class="text-decoration-none text-muted small">
+                    <i class="bi bi-arrow-left me-1"></i>Back to Categories
+                </a>
+            </div>
+
+            <div class="card border-0 shadow-lg overflow-hidden">
+                <div class="bg-danger bg-opacity-10 text-center py-5">
+                    <div class="bg-white text-danger rounded-circle d-inline-flex align-items-center justify-content-center shadow-sm"
+                         style="width:90px;height:90px;">
+                        <i class="bi bi-trash3 fs-1"></i>
+                    </div>
+                </div>
+                <div class="card-body p-4 p-md-5 text-center">
+                    <h3 class="fw-bold mb-2">Delete this category?</h3>
+                    <p class="text-muted mb-4">
+                        You are about to permanently remove
+                        <strong class="text-dark">"@Model.Name"</strong>.
+                        Linked restaurants and menu items may be affected.
+                    </p>
+
+                    <!-- Summary -->
+                    <div class="bg-light rounded p-3 text-start mb-4">
+                        <div class="row small">
+                            <div class="col-4 text-muted">Category ID</div>
+                            <div class="col-8 fw-semibold">#@Model.Id</div>
+                        </div>
+                        <hr class="my-2" />
+                        <div class="row small">
+                            <div class="col-4 text-muted">Name</div>
+                            <div class="col-8 fw-semibold">@Model.Name</div>
+                        </div>
+                        @if (!string.IsNullOrEmpty(Model.Description))
+                        {
+                            <hr class="my-2" />
+                            <div class="row small">
+                                <div class="col-4 text-muted">Description</div>
+                                <div class="col-8">@Model.Description</div>
+                            </div>
+                        }
+                    </div>
+
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-danger btn-lg fw-bold py-3">
+                                <i class="bi bi-trash3 me-2"></i>Confirm Deletion
+                            </button>
+                            <a asp-action="Index" class="btn btn-light py-2">Cancel and Keep</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
