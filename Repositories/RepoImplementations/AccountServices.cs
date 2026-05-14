@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Identity.Client;
+using System.Security.Claims;
 using TalabatSmartVillage.Auth;
 using TalabatSmartVillage.Controllers;
 using TalabatSmartVillage.Repositories.Interfaces;
@@ -68,5 +70,43 @@ namespace TalabatSmartVillage.Services
 
         public async Task LogoutAsync()
             => await _signInManager.SignOutAsync();
+
+
+        public AuthenticationProperties GetGoogleLoginProperties(string redirectUrl)
+        {
+            return _signInManager.ConfigureExternalAuthenticationProperties("Google", redirectUrl);
+        }
+
+        public async Task<SignInResult> GoogleLoginAsync()
+        {
+            var info = await _signInManager.GetExternalLoginInfoAsync();
+            if (info == null) return SignInResult.Failed;
+
+            // Try sign in if user already linked Google before
+            var result = await _signInManager.ExternalLoginSignInAsync(
+                info.LoginProvider, info.ProviderKey, isPersistent: false);
+
+            return result;
+        }
+
+        public async Task<IdentityResult> RegisterExternalAsync(ExternalLoginInfo info)
+        {
+            var email = info.Principal.FindFirstValue(ClaimTypes.Email);
+            var name = info.Principal.FindFirstValue(ClaimTypes.Name);
+
+            var user = new AppUser
+            {
+                UserName = email,
+                Email = email,
+                FullName = name,  // adjust to match your User model
+                CreatedAt = DateTime.UtcNow
+            };
+
+            var result = await _userManager.CreateAsync(user);
+            if (result.Succeeded)
+                await _userManager.AddLoginAsync(user, info);
+
+            return result;
+        }
     }
 }

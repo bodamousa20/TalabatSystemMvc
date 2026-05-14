@@ -57,7 +57,7 @@ builder.Services.AddAuthentication()
     {
         options.ClientId = builder.Configuration["Authentication:Google:ClientId"]!;
         options.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"]!;
-        options.SignInScheme = IdentityConstants.ExternalScheme;
+        options.CallbackPath = "/signin-google";
     });
 
 // Authorization: require login by default

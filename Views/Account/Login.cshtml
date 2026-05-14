@@ -49,14 +49,9 @@
 
                     <div class="text-center my-3 text-muted">or</div>
 
-                    <form asp-action="ExternalLogin" method="post">
-                        @Html.AntiForgeryToken()
-                        <input type="hidden" name="provider" value="Google" />
-                        <input type="hidden" name="returnUrl" value="@returnUrl" />
-                        <button type="submit" class="btn btn-outline-danger w-100 fw-semibold py-2">
-                            <i class="bi bi-google me-2"></i>Continue with Google
-                        </button>
-                    </form>
+                    <a href="/Account/GoogleLogin" class="btn btn-outline-danger w-100 fw-semibold py-2">
+                        <i class="bi bi-google me-2"></i>Continue with Google
+                    </a>
                 </div>
 
                 <p class="text-center mt-3 text-muted">
