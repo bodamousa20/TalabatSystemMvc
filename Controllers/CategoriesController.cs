@@ -1,30 +1,26 @@
-﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using TalabatSmartVillage.Auth;
 using TalabatSmartVillage.Models;
+using TalabatSmartVillage.Services.Interfaces;
 
 namespace TalabatSmartVillage.Controllers
 {
     [Authorize(Roles = AppRoles.ADMIN)]
     public class CategoriesController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly ICategoryService _categoryService;
 
-        public CategoriesController(AppDbContext context)
+        public CategoriesController(ICategoryService categoryService)
         {
-            _context = context;
+            _categoryService = categoryService;
         }
 
-   
+        // GET: Categories
         public async Task<IActionResult> Index()
         {
-            return View(await _context.category.ToListAsync());
+            var categories = await _categoryService.GetAllAsync();
+            return View(categories);
         }
 
         // GET: Categories/Details/5
@@ -32,17 +28,12 @@ namespace TalabatSmartVillage.Controllers
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
-            var category = await _context.category.Include(P=>P.Restaurants)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var category = await _categoryService.GetByIdWithRestaurantsAsync(id.Value);
             if (category == null)
-            {
                 return NotFound();
-            }
-            
+
             return View(category);
         }
 
@@ -52,86 +43,58 @@ namespace TalabatSmartVillage.Controllers
             return View();
         }
 
-        
+        // POST: Categories/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Description")] Category category)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(category);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(category);
+            if (!ModelState.IsValid)
+                return View(category);
+
+            await _categoryService.CreateAsync(category);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Categories/Edit/5
-      
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
-            var category = await _context.category.FindAsync(id);
+            var category = await _categoryService.GetByIdAsync(id.Value);
             if (category == null)
-            {
                 return NotFound();
-            }
+
             return View(category);
         }
 
         // POST: Categories/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description")] Category category)
         {
             if (id != category.Id)
-            {
                 return NotFound();
-            }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(category);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CategoryExists(category.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(category);
+            if (!ModelState.IsValid)
+                return View(category);
+
+            var success = await _categoryService.UpdateAsync(category);
+            if (!success)
+                return NotFound();
+
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Categories/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
-            var category = await _context.category
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var category = await _categoryService.GetByIdAsync(id.Value);
             if (category == null)
-            {
                 return NotFound();
-            }
 
             return View(category);
         }
@@ -141,19 +104,8 @@ namespace TalabatSmartVillage.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var category = await _context.category.FindAsync(id);
-            if (category != null)
-            {
-                _context.category.Remove(category);
-            }
-
-            await _context.SaveChangesAsync();
+            await _categoryService.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool CategoryExists(int id)
-        {
-            return _context.category.Any(e => e.Id == id);
         }
     }
 }

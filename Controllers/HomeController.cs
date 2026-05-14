@@ -1,29 +1,28 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using TalabatSmartVillage.Models;
+using TalabatSmartVillage.Services.Interfaces;
 
 namespace TalabatSmartVillage.Controllers
 {
     [AllowAnonymous]
     public class HomeController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly IHomeService _homeService;
 
-        public HomeController(AppDbContext context)
+        public HomeController(IHomeService homeService)
         {
-            _context = context;
+            _homeService = homeService;
         }
 
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            // Redirect authenticated users to restaurants page
             if (User.Identity?.IsAuthenticated == true)
                 return RedirectToAction("Index", "Restaurant");
 
-            var categories = await _context.category.ToListAsync();
-            ViewBag.Restaurants = _context.restaurant.ToList();
+            var categories   = await _homeService.GetCategoriesAsync();
+            ViewBag.Restaurants = await _homeService.GetRestaurantsAsync();
+
             return View(categories);
         }
 

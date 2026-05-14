@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TalabatSmartVillage.Auth;
 using TalabatSmartVillage.Models;
+using TalabatSmartVillage.Repositories.Interfaces;
 using TalabatSmartVillage.ViewModel.AdminViewModels;
 
 namespace TalabatSmartVillage.Controllers
@@ -11,62 +12,44 @@ namespace TalabatSmartVillage.Controllers
     [Authorize(Roles = AppRoles.ADMIN)]
     public class AdminController : Controller
     {
-        private readonly AppDbContext _context;
-        private readonly UserManager<AppUser> _userManager;
+        private readonly IAdminService _adminService;
 
-        public AdminController(AppDbContext context, UserManager<AppUser> userManager)
+        public AdminController(IAdminService adminService)
         {
-            _context = context;
-            _userManager = userManager;
+            _adminService = adminService;
         }
+
+
 
         [HttpGet]
         public async Task<IActionResult> Dashboard()
         {
-            var model = new AdminDashboardViewModel
-            {
-                RestaurantCount = await _context.restaurant.CountAsync(),
-                CategoryCount = await _context.category.CountAsync(),
-                MenuItemCount = await _context.MenuItem.CountAsync(),
-                OrderCount = await _context.Order.CountAsync(),
-                UserCount = await _userManager.Users.CountAsync(),
-                PendingOrderCount = await _context.Order.CountAsync(o => o.Status == OrderStatus.PENDING),
-                TotalRevenue = await _context.Order
-                    .Where(o => o.Status == OrderStatus.DELIVERED)
-                    .SumAsync(o => (decimal?)o.TotalOrderPrice) ?? 0
-            };
-
+            var model = await _adminService.GetDashboardAsync();
             return View(model);
         }
 
-        // GET: Admin order management
         [HttpGet]
         public async Task<IActionResult> Orders()
         {
-            var orders = await _context.Order
-                .AsNoTracking()
-                .Include(o => o.User)
-                .Include(o => o.Restaurant)
-                .OrderByDescending(o => o.PlacedAt)
-                .ToListAsync();
-
+            var orders = await _adminService.GetOrdersAsync();
             return View(orders);
         }
 
-        // POST: Update order status
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> UpdateOrderStatus(int orderId, OrderStatus status)
         {
-            var order = await _context.Order.FindAsync(orderId);
-            if (order == null)
+            var found = await _adminService.UpdateOrderStatusAsync(orderId, status);
+            if (!found)
                 return NotFound();
-
-            order.Status = status;
-            await _context.SaveChangesAsync();
 
             TempData["Success"] = $"Order #{orderId} status updated.";
             return RedirectToAction(nameof(Orders));
         }
+
+
+
+
+
     }
 }

@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -126,10 +126,13 @@ namespace TalabatSmartVillage.Controllers
         }
 
         [HttpPost]
-        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddToCart(int menuItemId, int restaurantId)
         {
+            if (User.IsInRole(AppRoles.ADMIN))
+            {
+                return Forbid();
+            }
             var menuItem = await _context.MenuItem
                 .AsNoTracking()
                 .FirstOrDefaultAsync(item => item.Id == menuItemId && item.RestaurantId == restaurantId);

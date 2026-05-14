@@ -7,6 +7,8 @@ using TalabatSmartVillage.Models;
 using TalabatSmartVillage.Models.TalabatSmartVillage.Models;
 using TalabatSmartVillage.Repositories.Interfaces;
 using TalabatSmartVillage.Repositories.RepoImplementations;
+using TalabatSmartVillage.Services;
+using TalabatSmartVillage.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +16,15 @@ builder.Services.AddControllersWithViews();
 
 // Repositories
 builder.Services.AddScoped<IRestaurantRepo, RestaurantRepo>();
+builder.Services.AddScoped<IAdminService, AdminService>();
+builder.Services.AddScoped<IAccountservices, AccountService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<ICheckoutService, CheckoutService>();
+builder.Services.AddScoped<IHomeService, HomeService>();
+builder.Services.AddScoped<IUserService, UserService>();
+
+
+
 
 // Session
 builder.Services.AddDistributedMemoryCache();

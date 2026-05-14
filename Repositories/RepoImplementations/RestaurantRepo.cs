@@ -88,7 +88,7 @@ namespace TalabatSmartVillage.Repositories.RepoImplementations
                 Id = restaurant.Id,
                 Name = restaurant.Name,
                 Address = restaurant.Address,
-                CategoryId = restaurant.CategoryId, // already on the entity, no Include needed
+                CategoryId = restaurant.CategoryId, 
                 IsOpen = restaurant.IsOpen,
                 Categories = _appDbContext.category
                     .Select(c => new SelectListItem

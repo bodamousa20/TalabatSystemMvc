@@ -1,9 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using TalabatSmartVillage.Auth;
 using TalabatSmartVillage.Extensions;
-using TalabatSmartVillage.Models;
+using TalabatSmartVillage.Services.Interfaces;
 using TalabatSmartVillage.ViewModel.CartViewModels;
 using TalabatSmartVillage.ViewModel.CheckoutViewModels;
 
@@ -12,13 +10,11 @@ namespace TalabatSmartVillage.Controllers
     [Authorize]
     public class CheckoutController : Controller
     {
-        private readonly AppDbContext _context;
-        private readonly UserManager<AppUser> _userManager;
+        private readonly ICheckoutService _checkoutService;
 
-        public CheckoutController(AppDbContext context, UserManager<AppUser> userManager)
+        public CheckoutController(ICheckoutService checkoutService)
         {
-            _context = context;
-            _userManager = userManager;
+            _checkoutService = checkoutService;
         }
 
         // GET: /Checkout
@@ -33,15 +29,8 @@ namespace TalabatSmartVillage.Controllers
                 return RedirectToAction("Index", "Cart");
             }
 
-            var user = await _userManager.GetUserAsync(User);
-
-            var vm = new CheckoutViewModel
-            {
-                FullName = user?.FullName ?? string.Empty,
-                Phone = user?.PhoneNumber ?? string.Empty,
-                Address = user?.Address ?? string.Empty,
-                CartItems = cart
-            };
+            var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value!;
+            var vm = await _checkoutService.BuildCheckoutViewModelAsync(userId, cart);
 
             return View(vm);
         }
@@ -64,45 +53,18 @@ namespace TalabatSmartVillage.Controllers
             if (!ModelState.IsValid)
                 return View("Index", model);
 
-            // Determine restaurant from first item's restaurant
-            // (cart is per-restaurant in this system)
-            var firstItem = await _context.MenuItem.FindAsync(cart[0].MenuItemId);
-            if (firstItem == null)
+            var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value!;
+            var result = await _checkoutService.PlaceOrderAsync(userId, cart);
+
+            if (!result.Succeeded)
             {
-                ModelState.AddModelError("", "One or more items are no longer available.");
+                ModelState.AddModelError("", result.ErrorMessage ?? "Something went wrong.");
                 return View("Index", model);
             }
 
-            var userId = _userManager.GetUserId(User);
-
-            // Create Order
-            var order = new Order
-            {
-                UserId = userId!,
-                RestaurantId = firstItem.RestaurantId,
-                Status = OrderStatus.PENDING,
-                TotalOrderPrice = cart.Sum(x => x.LineTotal),
-                PlacedAt = DateTime.UtcNow
-            };
-
-            // Create OrderItems
-            foreach (var cartItem in cart)
-            {
-                order.OrderItems.Add(new OrderItem
-                {
-                    MenuItemId = cartItem.MenuItemId,
-                    Quantity = cartItem.Quantity,
-                    UnitPrice = cartItem.UnitPrice
-                });
-            }
-
-            _context.Order.Add(order);
-            await _context.SaveChangesAsync();
-
-            // Clear cart after successful order
             HttpContext.Session.Remove("cart");
 
-            TempData["OrderId"] = order.Id;
+            TempData["OrderId"] = result.OrderId;
             return RedirectToAction("Confirmation");
         }
 
