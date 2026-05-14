@@ -1,8 +1,7 @@
 @model IEnumerable<TalabatSmartVillage.Models.Category>
 
 @{
-    ViewData["Title"] = "Home";
-    Layout = "_Layout";
+    List<Restaurant> restaurants = ViewBag.Restaurants as List<Restaurant> ?? new List<Restaurant>();
 }
 
 <!-- Hero Section -->
@@ -61,16 +60,33 @@
 {
     <section class="py-5">
         <div class="container">
-            <h2 class="fw-bold mb-4">Browse by Category</h2>
+            <h2 class="fw-bold mb-4">Browse Category</h2>
             <div class="row g-3">
                 @foreach (var category in Model)
                 {
                     <div class="col-6 col-md-4 col-lg-3">
-                        <a asp-controller="Account" asp-action="Login"
+                        <a asp-controller="Categories" asp-action="Index"
                            class="card border-0 shadow-sm text-decoration-none text-dark text-center p-3 category-card h-100">
                             <i class="bi bi-egg-fried text-danger mb-2" style="font-size:2rem;"></i>
                             <div class="fw-bold">@category.Name</div>
                             <small class="text-muted">@category.Description</small>
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+    <section class="py-5">
+        <div class="container">
+            <h2 class="fw-bold mb-4">Browse Restaurant</h2>
+            <div class="row g-3">
+                @foreach (var restaurant in restaurants)
+                {
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <a asp-controller="Restaurant" asp-action="Index"
+                               class="card border-0 shadow-sm text-decoration-none text-dark text-center p-3 category-card h-100">
+                            <i class="bi bi-egg-fried text-danger mb-2" style="font-size:2rem;"></i>
+                            <div class="fw-bold">@restaurant.Name.</div>
                         </a>
                     </div>
                 }

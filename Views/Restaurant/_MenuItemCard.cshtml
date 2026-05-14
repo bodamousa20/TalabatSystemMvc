@@ -24,14 +24,25 @@
             <span class="fw-bold text-primary fs-6">@Model.Price.ToString("C")</span>
             @if (Model.IsAvailable)
             {
-                <form asp-controller="Restaurant" asp-action="AddToCart" method="post" class="mb-0">
-                    @Html.AntiForgeryToken()
-                    <input type="hidden" name="menuItemId" value="@Model.Id" />
-                    <input type="hidden" name="restaurantId" value="@Model.RestaurantId" />
-                    <button type="submit" class="btn btn-sm btn-primary">
+                if (User.Identity?.IsAuthenticated == true)
+                {
+                    <form asp-controller="Restaurant" asp-action="AddToCart" method="post" class="mb-0">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="menuItemId" value="@Model.Id" />
+                        <input type="hidden" name="restaurantId" value="@Model.RestaurantId" />
+                        <button type="submit" class="btn btn-sm btn-primary">
+                            <i class="bi bi-cart-plus me-1"></i>Add
+                        </button>
+                    </form>
+                }
+                else
+                {
+                    <a asp-controller="Account" asp-action="Login"
+                           asp-route-returnUrl="@Context.Request.Path"
+                           class="btn btn-sm btn-primary">
                         <i class="bi bi-cart-plus me-1"></i>Add
-                    </button>
-                </form>
+                    </a>
+                }
             }
             else
             {

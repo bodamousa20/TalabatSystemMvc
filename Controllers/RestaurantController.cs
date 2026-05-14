@@ -1,8 +1,9 @@
-﻿using System;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
+using TalabatSmartVillage.Auth;
 using TalabatSmartVillage.Extensions;
 using TalabatSmartVillage.Models;
 using TalabatSmartVillage.Repositories.Interfaces;
@@ -12,7 +13,7 @@ using TalabatSmartVillage.ViewModel.RestaurantViewModels;
 
 namespace TalabatSmartVillage.Controllers
 {
-
+    [AllowAnonymous]
     public class RestaurantController : Controller
     {
         private readonly IRestaurantRepo _repo;
@@ -31,19 +32,7 @@ namespace TalabatSmartVillage.Controllers
             return View(restaurants);
         }
 
-        // GET: RestaurantController/Details/5
-        public ActionResult Details(int id)
-        {
-            try
-            {
-                var restaurant = _repo.GetById(id);
-                return View(restaurant);
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
-        }
+      
 
         [HttpGet]
         public async Task<IActionResult> Menu(int id, string? search, string? category)
@@ -218,7 +207,7 @@ namespace TalabatSmartVillage.Controllers
         }
 
         // GET: RestaurantController/Create
-        [Authorize]
+        [Authorize(Roles = AppRoles.ADMIN)]
         public ActionResult Create()
         {
             return View();
@@ -227,6 +216,7 @@ namespace TalabatSmartVillage.Controllers
         // POST: RestaurantController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = AppRoles.ADMIN)]
         public ActionResult Create(RestaurantFormViewModel vm)
         {
             if (!ModelState.IsValid)
@@ -247,6 +237,7 @@ namespace TalabatSmartVillage.Controllers
         }
 
         // GET: RestaurantController/Edit/5
+        [Authorize(Roles = AppRoles.ADMIN)]
         public ActionResult Edit(int id)
         {
             try
@@ -263,6 +254,7 @@ namespace TalabatSmartVillage.Controllers
         // POST: RestaurantController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = AppRoles.ADMIN)]
         public ActionResult Edit(int id, RestaurantFormViewModel vm)
         {
             if (!ModelState.IsValid)
@@ -283,6 +275,7 @@ namespace TalabatSmartVillage.Controllers
         }
 
         // GET: RestaurantController/Delete/5
+        [Authorize(Roles = AppRoles.ADMIN)]
         public ActionResult Delete(int id)
         {
             try
@@ -299,6 +292,7 @@ namespace TalabatSmartVillage.Controllers
         // POST: RestaurantController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = AppRoles.ADMIN)]
         public ActionResult DeleteConfirmed(int id)
         {
             try

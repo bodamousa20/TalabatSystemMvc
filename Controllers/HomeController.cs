@@ -23,6 +23,7 @@ namespace TalabatSmartVillage.Controllers
                 return RedirectToAction("Index", "Restaurant");
 
             var categories = await _context.category.ToListAsync();
+            ViewBag.Restaurants = _context.restaurant.ToList();
             return View(categories);
         }
 

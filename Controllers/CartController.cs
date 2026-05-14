@@ -13,6 +13,8 @@ namespace TalabatSmartVillage.Controllers
         {
             var cart = HttpContext.Session.GetJson<List<CartItemViewModel>>("cart") ?? new();
             return View(cart);
+
+
         }
 
         // POST: /Cart/UpdateQuantity
