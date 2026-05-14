@@ -72,11 +72,13 @@ namespace TalabatSmartVillage.Controllers
         }
 
         [HttpGet]
-        public IActionResult Login()
+        public IActionResult Login(string? returnUrl = null)
         {
             if (User.Identity?.IsAuthenticated == true)
                 return RedirectToAction("Index", "Home");
-            return View();
+  
+            ViewData["ReturnUrl"] = returnUrl;
+          return View();
         }
 
         [HttpPost]
